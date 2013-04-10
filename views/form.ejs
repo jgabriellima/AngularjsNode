@@ -1,0 +1,52 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<p style="margin-top: -25px;padding: 3px" class="alert" align='justify'>
+    App exemplo do uso do AngularJS com o NodeJs e MongoDB. As etapas para o projeto podem ser encontrados em 'Passo-a-Passo' 
+    e o código-fonte do projeto netbeans pode ser baixado <a href="#">aqui</a>.
+</p>
+<form>
+    <div class="row-fluid">
+        <input type="hidden" value="" ng-model="agenda.id">
+        <input type="text" class="span4" ng-model="agenda.nome" placeholder="Nome"/>
+        <input type="email" class="span3" ng-model="agenda.email" placeholder="E-mail"/>
+        <input type="text" class="span2" ui-mask="'(99)9999-9999'" ng-model="agenda.telefone" placeholder="Telefone"/>
+        <input type="text" class="span2" ui-mask="'(99)9999-9999'" ng-model="agenda.celular" placeholder="Celular"/>
+    </div>
+    <div class="row-fluid">
+        <textarea class="span12" placeholder="Descrição" ng-model="agenda.descricao"></textarea>
+    </div>
+    <div class="row-fluid">
+        <button class="btn-primary" ng-click="inserir()">Salvar</button>
+        <button class="btn-danger" type="reset">Limpar</button>
+    </div>
+</form>
+<div ng-show="agendas.length">
+    <hr>
+    <input type="text" ng-model="x" class="pull-right" placeholder="Buscar..."/>
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <td>Nome</td>
+                <td>E-mail</td>
+                <td>Telefone</td>
+                <td>Celular</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="agenda in agendas|filter:x">
+                <td>{{agenda.nome}}</td>
+                <td>{{agenda.email}}</td>
+                <td>{{agenda.telefone}}</td>
+                <td>{{agenda.celular}}</td>
+                <td>
+                    <a href="javascript:;" ng-click="editar(agenda)">
+                        <span class="label"><i class="icon-edit"></i></span>
+                    </a> |
+                    <a href="javascript:;" ng-click="deletar(agenda)">
+                        <span class="label label-important"><i class="icon-remove"></i></span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
